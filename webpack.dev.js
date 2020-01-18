@@ -7,6 +7,17 @@ module.exports = {
         mode: 'development',
         devtool: 'source-map',
         entry: './src/client/index.js',
+        devServer: {
+            historyApiFallback: true,
+            hot: true,
+            inline: true,
+          
+            host: 'localhost', // Defaults to `localhost`
+            //port: 3000, // Defaults to 8080
+            proxy: {
+              '/test': 'http://localhost:8081'
+            }
+        },  
         output: {
             libraryTarget: 'var',
             library: 'Client'
